@@ -34,10 +34,12 @@ public class ClientHandler {
                             break;
                         }
                         if (message.startsWith("/w ")) {
-                            // TODO homework
+                            String[] part = message.split(" ", 3);
+                            server.sendPrivateMessage(this, part[1], part[2]);
                         }
+                    } else {
+                        server.broadcastMessage(username + ": " + message);
                     }
-                    server.broadcastMessage(username + ": " + message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
